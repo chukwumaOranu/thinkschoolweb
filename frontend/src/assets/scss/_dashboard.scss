@@ -1,0 +1,374 @@
+// ===========================
+// Dashboard
+// ===========================
+
+// ---- Group color palette ----
+
+$dashboard-groups: (
+  "site":     #003399,
+  "sections": #7c3aed,
+  "features": #0891b2,
+  "contact":  #d97706,
+);
+
+// ---- Shell ----
+
+.dashboard-shell {
+  min-height: 100vh;
+  background: #f0f2f8;
+}
+
+// ---- Topbar ----
+
+.dashboard-topbar {
+  background: $white;
+  border-bottom: 1px solid $gray-200;
+  box-shadow: 0 1px 4px rgba($gray-900, 0.06);
+  height: 64px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dashboard-brand-logo {
+  height: 44px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.dashboard-user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: $primary;
+  color: $white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+// ---- Layout grid ----
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+// ---- Sidebar ----
+
+.dashboard-sidebar {
+  position: sticky;
+  top: 24px;
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba($gray-900, 0.05);
+  padding: 10px 8px 16px;
+  overflow: hidden;
+}
+
+.dashboard-nav-overview.nav-link {
+  color: $gray-700;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transition: background 0.14s, color 0.14s;
+
+  &:hover {
+    color: $primary;
+    background: rgba($primary, 0.07);
+  }
+
+  &.active {
+    color: $primary;
+    background: rgba($primary, 0.1);
+    font-weight: 700;
+  }
+}
+
+.dashboard-nav-section {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid $gray-200;
+
+  .nav-link {
+    color: $gray-700;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: background 0.14s, color 0.14s;
+
+    &:hover {
+      background: rgba($gray-900, 0.04);
+      color: $gray-900;
+    }
+
+    &.active {
+      font-weight: 700;
+    }
+  }
+}
+
+.dashboard-nav-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: $gray-500;
+  padding: 8px 12px 2px;
+  margin: 0;
+}
+
+// Group-colored sidebar active states
+@each $group, $color in $dashboard-groups {
+  .dashboard-nav-section[data-group="#{$group}"] {
+    .nav-link.active {
+      color: $color;
+      background: rgba($color, 0.09);
+    }
+
+    .nav-link:hover {
+      color: $color;
+      background: rgba($color, 0.06);
+    }
+
+    .dashboard-nav-section-label {
+      color: $color;
+    }
+  }
+}
+
+// ---- Welcome / kicker ----
+
+.dashboard-welcome {
+  padding: 2px 0 0;
+}
+
+.dashboard-kicker {
+  color: $primary;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// ---- Group header ----
+
+.dashboard-group-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+// ---- Resource cards ----
+
+.dashboard-resource-card {
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba($gray-900, 0.05);
+  padding: 20px 20px 18px;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: $primary;
+    border-radius: 12px 12px 0 0;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba($gray-900, 0.1);
+  }
+}
+
+.dashboard-resource-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.dashboard-resource-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.dashboard-resource-card__count {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  color: $primary;
+}
+
+.dashboard-resource-card__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: $gray-900;
+  margin-bottom: 6px;
+}
+
+.dashboard-resource-card__desc {
+  font-size: 13px;
+  color: $gray-500;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  line-height: 1.55;
+}
+
+.dashboard-resource-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: $primary;
+  margin-top: auto;
+
+  .iconify {
+    transition: transform 0.15s ease;
+  }
+}
+
+.dashboard-resource-card:hover .dashboard-resource-card__action .iconify {
+  transform: translateX(3px);
+}
+
+// Group-colored cards
+@each $group, $color in $dashboard-groups {
+  .dashboard-resource-group[data-group="#{$group}"] {
+    .dashboard-resource-card::before {
+      background: $color;
+    }
+
+    .dashboard-resource-card__icon {
+      background: rgba($color, 0.1);
+      color: $color;
+    }
+
+    .dashboard-resource-card__count {
+      color: $color;
+    }
+
+    .dashboard-resource-card__action {
+      color: $color;
+    }
+
+    .dashboard-group-icon {
+      background: rgba($color, 0.1);
+      color: $color;
+    }
+  }
+}
+
+// ---- Shared panel / icon (used in resource-page) ----
+
+.dashboard-panel {
+  background: $white;
+  border: 1px solid $gray-200 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 8px rgba($gray-900, 0.05);
+}
+
+.dashboard-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+// ---- Table ----
+
+.dashboard-table thead th {
+  color: $gray-500;
+  background: $gray-100;
+  border-bottom: 0;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.dashboard-table tbody td {
+  border-color: $gray-200;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+// ---- Form grid ----
+
+.dashboard-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dashboard-form-grid .span-full {
+  grid-column: 1 / -1;
+}
+
+// ---- Responsive ----
+
+@media (max-width: 991.98px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dashboard-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

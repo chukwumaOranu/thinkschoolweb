@@ -1,0 +1,44 @@
+{
+  "name": "skywavereact",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
+    "docker:up": "docker compose --env-file server/.env.development up --build",
+    "docker:down": "docker compose --env-file server/.env.development down"
+  },
+  "dependencies": {
+    "@iconify/react": "^5.0.2",
+    "@tanstack/react-query": "^5.100.14",
+    "bootstrap": "^5.3.3",
+    "clsx": "^2.1.1",
+    "gumshoejs": "^5.1.2",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.5",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "sass": "^1.80.6",
+    "swiper": "^11.1.14",
+    "zustand": "^5.0.13"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.11.0",
+    "vite": "^5.4.10"
+  }
+}
